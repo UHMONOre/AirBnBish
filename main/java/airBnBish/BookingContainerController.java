@@ -1,4 +1,4 @@
-package com.hotel.hotel;
+package airBnBish;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

@@ -1,4 +1,4 @@
-package com.hotel.hotel;
+package airBnBish;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,7 +15,7 @@ import java.time.LocalDate;
 import java.util.LinkedHashMap;
 import java.util.TreeSet;
 
-import static com.hotel.hotel.Home.arrangeCountryCity;
+import static airBnBish.Home.arrangeCountryCity;
 
 public class MainController {
     private Customer customer;

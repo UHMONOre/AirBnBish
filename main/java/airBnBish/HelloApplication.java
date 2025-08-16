@@ -1,4 +1,4 @@
-package com.hotel.hotel;
+package airBnBish;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -9,9 +9,9 @@ import java.sql.SQLException;
 
 import java.io.IOException;
 
-import static com.hotel.hotel.Customer.*;
-import static com.hotel.hotel.DBmanager.*;
-import static com.hotel.hotel.Home.*;
+import static airBnBish.Customer.*;
+import static airBnBish.DBmanager.*;
+import static airBnBish.Home.*;
 
 public class HelloApplication extends Application {
     @Override

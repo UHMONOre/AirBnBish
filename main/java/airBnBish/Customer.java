@@ -1,11 +1,11 @@
-package com.hotel.hotel;
+package airBnBish;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashMap;
 
-import static com.hotel.hotel.DBmanager.*;
+import static airBnBish.DBmanager.*;
 
 public class Customer {
     private Integer id;

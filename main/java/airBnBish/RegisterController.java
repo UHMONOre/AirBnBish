@@ -1,4 +1,4 @@
-package com.hotel.hotel;
+package airBnBish;
 
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
@@ -18,7 +18,7 @@ import javafx.util.Duration;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import static com.hotel.hotel.Customer.*;
+import static airBnBish.Customer.*;
 
 public class RegisterController {
     @FXML

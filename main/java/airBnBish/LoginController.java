@@ -1,4 +1,4 @@
-package com.hotel.hotel;
+package airBnBish;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,7 +16,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import static com.hotel.hotel.Customer.*;
+import static airBnBish.Customer.*;
 
 public class LoginController {
     @FXML

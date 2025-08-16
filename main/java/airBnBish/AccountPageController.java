@@ -1,4 +1,4 @@
-package com.hotel.hotel;
+package airBnBish;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

@@ -1,4 +1,4 @@
-package com.hotel.hotel;
+package airBnBish;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
