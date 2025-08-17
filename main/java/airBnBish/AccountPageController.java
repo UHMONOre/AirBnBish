@@ -73,7 +73,7 @@ public class AccountPageController {
                 AnchorPane bookingCard = loader.load();
 
                 BookingContainerController controller = loader.getController();
-                controller.initDate(home, dates.first(), dates.last());
+                controller.initDate(customer, home, dates.first(), dates.last());
 
                 bookingContainer.getChildren().add(bookingCard);
             }
