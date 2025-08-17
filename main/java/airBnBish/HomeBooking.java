@@ -1,5 +1,6 @@
 package airBnBish;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -87,5 +88,16 @@ public class HomeBooking {
             homeList.add(home);
         }
         return homeList;
+    }
+
+    public static void cancelBooking(Customer customer, Home home, LocalDate startDate, LocalDate endDate) throws SQLException {
+        DBmanager dBmanager = DBmanager.createConnection();
+        String sql = "delete from homebookings where CustomerId = ? and HomeId = ? and BookingDate >= ? and BookingDate <= ?";
+        PreparedStatement ps = dBmanager.connection.prepareStatement(sql);
+        ps.setInt(1, customer.getId());
+        ps.setInt(2, home.getId());
+        ps.setDate(3, Date.valueOf(startDate));
+        ps.setDate(4, Date.valueOf(endDate));
+        ps.executeUpdate();
     }
 }
