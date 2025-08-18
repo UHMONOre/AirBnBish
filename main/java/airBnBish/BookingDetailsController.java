@@ -16,7 +16,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.Optional;
 
 public class BookingDetailsController {
     private Customer customer;
