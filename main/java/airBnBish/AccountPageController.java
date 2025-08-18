@@ -84,7 +84,8 @@ public class AccountPageController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("EditAccount.fxml"));
         Parent root = loader.load();
 
-        //controller
+        EditAccountController controller = loader.getController();
+        controller.initData(customer);
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);

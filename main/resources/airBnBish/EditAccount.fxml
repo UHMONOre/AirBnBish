@@ -16,7 +16,7 @@
       <PasswordField fx:id="passConfField" layoutX="226.0" layoutY="248.0" />
       <Text layoutX="225.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" />
       <Text layoutX="225.0" layoutY="244.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password Confermation:" />
-      <Button layoutX="202.0" layoutY="310.0" mnemonicParsing="false" text="Return" />
-      <Button layoutX="345.0" layoutY="310.0" mnemonicParsing="false" text="Confirm" />
+      <Button layoutX="202.0" layoutY="310.0" mnemonicParsing="false" onAction="#returnAction" text="Return" />
+      <Button layoutX="345.0" layoutY="310.0" mnemonicParsing="false" onAction="#checkEdit" text="Confirm" />
    </children>
 </AnchorPane>
