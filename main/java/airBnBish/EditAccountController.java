@@ -51,7 +51,8 @@ public class EditAccountController {
 
         //finish this
         //maybe make the check on customer???
-        //fix the home and customer dependency on maps -> sql
+        //fix the home dependency on maps -> sql and fix code to use only sql also add customerid on homes
+        //check bookings
     }
 
     public void returnAction(ActionEvent event) throws IOException, SQLException {

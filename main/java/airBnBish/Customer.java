@@ -1,19 +1,15 @@
 package airBnBish;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.HashMap;
-
-import static airBnBish.DBmanager.*;
 
 public class Customer {
     private Integer id;
     private String username;
     private String email;
     private String password;
-    private static Integer idCustomerHolder = 0;
-    private static HashMap<Integer,Customer> CustomerMap = new HashMap<>();
 
     @Override
     public String toString() {
@@ -23,14 +19,6 @@ public class Customer {
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 '}';
-    }
-
-    public Customer(String username, String email, String password){
-        this.username = username;
-        this.email = email;
-        this.password = password;
-        this.id = idCustomerHolder;
-        idCustomerHolder++;
     }
 
     public Customer() {
@@ -69,70 +57,65 @@ public class Customer {
         this.id = id;
     }
 
-    public static void createCustomerTable(Statement statement) throws SQLException {
-        ResultSet set = statement.executeQuery("Select Id,Username,Email,Password From customers");
+    public static Integer checkRegisterCustomer(String username, String email, String password, String conf) throws SQLException {
+        DBmanager dBmanager = DBmanager.createConnection();
+        String sql = "select Username, Email from customers";
+        PreparedStatement ps = dBmanager.connection.prepareStatement(sql);
+        ResultSet set = ps.executeQuery();
 
-        while (set.next()){
+        DBmanager.closeConnections(dBmanager);
+
+        if (set.next()) return 1; //account exists
+
+        if (password.equals(conf)){
+            return 0; //all good
+        }else {
+            return 2; // passwords wrong
+        }
+    }
+
+    public static Integer checkLoginCustomer(String username, String password) throws SQLException {
+        Customer customer = retrieveCustomer(username);
+
+        if (customer == null){
+            return 2; // wrong username
+        }else {
+            if (password.equals(customer.getPassword())){
+                return 0; //success
+            }else {
+                return 1; // wrong password
+            }
+        }
+    }
+
+    public static Customer retrieveCustomer(String username) throws SQLException {
+        DBmanager dBmanager = DBmanager.createConnection();
+        String sql = "select * from customers where Username = ?";
+        PreparedStatement ps = dBmanager.connection.prepareStatement(sql);
+        ps.setString(1, username);
+        ResultSet set = ps.executeQuery();
+
+        if (set.next()){
             Customer temp = new Customer();
+
             temp.setId(set.getInt("Id"));
             temp.setEmail(set.getString("Email"));
             temp.setUsername(set.getString("Username"));
             temp.setPassword(set.getString("Password"));
-            CustomerMap.put(temp.getId(),temp);
-            if (idCustomerHolder < temp.getId()){
-                idCustomerHolder = temp.id;
-            }
-        }
-        idCustomerHolder++;
 
-        set.close();
-    }
-
-    public static Integer checkRegisterCustomer(String username, String email, String password, String conf){
-        for (Customer customer : CustomerMap.values()){
-            if (username.equals(customer.getUsername()) || email.equals(customer.getEmail())){
-                return 1; //account exists
-            }
-        }
-        if (password.equals(conf)){
-            return 0;//all good
+            return temp;
         }else {
-            return 2;//passwords wrong
+            return null;
         }
-    }
-
-    public static Integer checkLoginCustomer(String username, String password){
-        for (Customer customer : CustomerMap.values()){
-            if (username.equals(customer.getUsername())) {
-                if (password.equals(customer.getPassword())){
-                    return 0; //success
-                }else {
-                    return 1; // wrong password
-                }
-            }
-        }
-        return 2; //wrong username
-    }
-
-    public static Customer retrieveCustomer(String username, String password){
-        for (Customer customer : CustomerMap.values()){
-            if (username.equals(customer.getUsername())){
-                return customer;
-            }
-        }
-        return null;
     }
 
     public static void createCustomer(String username, String email, String password) throws SQLException {
-        DBmanager dBmanager = createConnection();
-        Customer customer = new Customer(username, email, password);
-        CustomerMap.put(idCustomerHolder, customer);
-        String sql = "INSERT INTO customers (Id, Username, Email, Password) VALUES ("
-                + customer.getId() + ", '"
-                + customer.getUsername() + "', '"
-                + customer.getEmail() + "', '"
-                + customer.getPassword() + "')";
-        dBmanager.statement.executeUpdate(sql);
-        closeConnections(dBmanager);
+        DBmanager dBmanager = DBmanager.createConnection();
+        String sql = "insert into customers (Username, Email, Password) values (?, ?, ?)";
+        PreparedStatement ps = dBmanager.connection.prepareStatement(sql);
+        ps.setString(1, username);
+        ps.setString(2, email);
+        ps.setString(3, password);
+        ps.executeUpdate();
     }
 }

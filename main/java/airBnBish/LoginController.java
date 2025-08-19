@@ -58,7 +58,7 @@ public class LoginController {
         Integer flag = checkLoginCustomer(username,password);
 
         if (flag == 0){
-            Customer customer = retrieveCustomer(username,password);
+            Customer customer = retrieveCustomer(username);
             FXMLLoader loader = new FXMLLoader(getClass().getResource("AccountPage.fxml"));
             Parent root = loader.load();
 

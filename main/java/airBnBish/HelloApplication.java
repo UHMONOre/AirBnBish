@@ -25,18 +25,6 @@ public class HelloApplication extends Application {
     }
 
     public static void main(String[] args) {
-        try {
-            DBmanager dBmanager = createConnection();
-
-            createCustomerTable(dBmanager.statement);
-            createHomeTable(dBmanager.statement);
-
-            launch();
-
-            closeConnections(dBmanager);
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        launch();
     }
 }
