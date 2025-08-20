@@ -5,13 +5,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.sql.SQLException;
-
 import java.io.IOException;
-
-import static airBnBish.Customer.*;
-import static airBnBish.DBmanager.*;
-import static airBnBish.Home.*;
 
 public class HelloApplication extends Application {
     @Override

@@ -47,7 +47,7 @@ public class MainController {
     }
 
     @FXML
-    private void initialize(){
+    private void initialize() throws SQLException {
         //spinner
         SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1,8);
         valueFactory.setValue(1);

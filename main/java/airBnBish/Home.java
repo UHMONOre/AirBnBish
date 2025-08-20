@@ -1,5 +1,6 @@
 package airBnBish;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -16,8 +17,7 @@ public class Home {
     private Integer id;
     private Double price;
     private String imageURL;
-    private static Integer idHomeHolder = 0;
-    private static HashMap<Integer,Home> homeMap = new HashMap<>();
+    private Integer customerId;
 
     @Override
     public String toString() {
@@ -29,30 +29,21 @@ public class Home {
                 ", capacity=" + capacity +
                 ", id=" + id +
                 ", price=" + price +
+                ", imageURL='" + imageURL + '\'' +
+                ", customerId='" + customerId + '\'' +
                 '}';
     }
 
-    public Home(String address, String title, String country, String city, Integer capacity, Integer id, Double price, String imageURL) {
+    public Home(String address, String title, String country, String city, Integer capacity, Integer id, Double price, String imageURL, Integer customerId) {
         this.address = address;
         this.title = title;
         this.country = country;
         this.city = city;
         this.capacity = capacity;
-        this.price = price;
         this.id = id;
-        this.imageURL = imageURL;
-    }
-
-    public Home(String address, String title, String country, String city, Integer capacity, Double price, String imageURL) {
-        this.address = address;
-        this.title = title;
-        this.country = country;
-        this.city = city;
-        this.capacity = capacity;
         this.price = price;
         this.imageURL = imageURL;
-        this.id = idHomeHolder;
-        idHomeHolder++;
+        this.customerId = customerId;
     }
 
     public Home(){}
@@ -121,41 +112,51 @@ public class Home {
         this.imageURL = imageURL;
     }
 
-    public static void createHomeTable(Statement statement) throws SQLException {
-        ResultSet set = statement.executeQuery("Select Address,Capacity,City,Country,Id,Title,Price,Image From homes");
-
-        while (set.next()){
-            Home temp = new Home();
-            temp.setAddress(set.getString("Address"));
-            temp.setCapacity(set.getInt("Capacity"));
-            temp.setCity(set.getString("City"));
-            temp.setCountry(set.getString("Country"));
-            temp.setId(set.getInt("Id"));
-            temp.setTitle(set.getString("Title"));
-            temp.setPrice(set.getDouble("Price"));
-            temp.setImageURL(set.getString("Image"));
-            homeMap.put(temp.getId(), temp);
-            if (idHomeHolder < temp.getId()){
-                idHomeHolder = temp.getId();
-            }
-        }
-        idHomeHolder++;
-        set.close();
+    public Integer getCustomerId() {
+        return customerId;
     }
 
-    public static void arrangeCountryCity (TreeSet<String> countries, LinkedHashMap<String, TreeSet<String>> countryCity){
-        for (Home home : homeMap.values()){
-            countries.add(home.getCountry());
-            countryCity.putIfAbsent(home.getCountry(), new TreeSet<>());
-            countryCity.get(home.getCountry()).add(home.city);
+    public void setCustomerId(Integer customerId) {
+        this.customerId = customerId;
+    }
+
+    public static void arrangeCountryCity (TreeSet<String> countries, LinkedHashMap<String, TreeSet<String>> countryCity) throws SQLException {
+        DBmanager dBmanager = DBmanager.createConnection();
+        String sql = "select Country, City from homes";
+        PreparedStatement ps = dBmanager.connection.prepareStatement(sql);
+        ResultSet set = ps.executeQuery();
+
+        while (set.next()) {
+            String country = set.getString("Country");
+            String city = set.getString("City");
+
+            countries.add(country);
+            countryCity.putIfAbsent(country, new TreeSet<>());
+            countryCity.get(country).add(city);
         }
     }
 
-    public static Home retrieveHome(Integer id){
-        for (Home home : homeMap.values()){
-            if (home.getId().equals(id)){
-                return home;
-            }
+    public static Home retrieveHome(Integer id) throws SQLException {
+        DBmanager dBmanager = DBmanager.createConnection();
+        String sql = "select * from homes where Id = ?";
+        PreparedStatement ps = dBmanager.connection.prepareStatement(sql);
+        ps.setInt(1, id);
+        ResultSet set = ps.executeQuery();
+
+        if (set.next()){
+            Home tempHome = new Home();
+
+            tempHome.setId(set.getInt("Id"));
+            tempHome.setAddress(set.getString("Address"));
+            tempHome.setTitle(set.getString("Title"));
+            tempHome.setCountry(set.getString("Country"));
+            tempHome.setCity(set.getString("City"));
+            tempHome.setCapacity(set.getInt("Capacity"));
+            tempHome.setPrice(set.getDouble("Price"));
+            tempHome.setImageURL(set.getString("Image"));
+            tempHome.setCustomerId(set.getInt("CustomerId"));
+
+            return tempHome;
         }
         return null;
     }

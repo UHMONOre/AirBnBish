@@ -3,7 +3,6 @@ package airBnBish;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashMap;
 
 public class Customer {
     private Integer id;
@@ -59,11 +58,11 @@ public class Customer {
 
     public static Integer checkRegisterCustomer(String username, String email, String password, String conf) throws SQLException {
         DBmanager dBmanager = DBmanager.createConnection();
-        String sql = "select Username, Email from customers";
+        String sql = "select Id from customers where Username = ? or Email = ?";
         PreparedStatement ps = dBmanager.connection.prepareStatement(sql);
+        ps.setString(1, username);
+        ps.setString(2, email);
         ResultSet set = ps.executeQuery();
-
-        DBmanager.closeConnections(dBmanager);
 
         if (set.next()) return 1; //account exists
 
