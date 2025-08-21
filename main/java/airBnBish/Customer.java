@@ -108,6 +108,27 @@ public class Customer {
         }
     }
 
+    public static Customer retrieveCustomer(Integer id) throws SQLException {
+        DBmanager dBmanager = DBmanager.createConnection();
+        String sql = "select * from customers where Id = ?";
+        PreparedStatement ps = dBmanager.connection.prepareStatement(sql);
+        ps.setInt(1, id);
+        ResultSet set = ps.executeQuery();
+
+        if (set.next()){
+            Customer temp = new Customer();
+
+            temp.setId(set.getInt("Id"));
+            temp.setEmail(set.getString("Email"));
+            temp.setUsername(set.getString("Username"));
+            temp.setPassword(set.getString("Password"));
+
+            return temp;
+        }else {
+            return null;
+        }
+    }
+
     public static void createCustomer(String username, String email, String password) throws SQLException {
         DBmanager dBmanager = DBmanager.createConnection();
         String sql = "insert into customers (Username, Email, Password) values (?, ?, ?)";

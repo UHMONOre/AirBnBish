@@ -35,6 +35,7 @@ public class AccountPageController {
         this.customer = customer;
 
         usernameLabel.setText("Welcome " + customer.getUsername() + "!");
+        System.out.println("....");
 
         loadBookings();
     }

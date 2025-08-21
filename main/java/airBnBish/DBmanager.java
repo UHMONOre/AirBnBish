@@ -22,7 +22,7 @@ public class DBmanager {
          connection1 = DriverManager.getConnection(hdbURL, username, password);
          Statement statement = connection1.createStatement();
          DBmanager dBmanager = new DBmanager(connection1, statement);
-         System.out.println("Connected to the database!");
+         //System.out.println("Connected to the database!");
          return dBmanager;
     }
 
