@@ -3,6 +3,7 @@ package airBnBish;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class Customer {
     private Integer id;
@@ -137,5 +138,32 @@ public class Customer {
         ps.setString(2, email);
         ps.setString(3, password);
         ps.executeUpdate();
+    }
+
+    public ArrayList<Home> ownedHomes() throws SQLException {
+        ArrayList<Home> homeList = new ArrayList<>();
+        DBmanager dBmanager = DBmanager.createConnection();
+        String sql = "select * from homes where CustomerId = ?";
+        PreparedStatement ps = dBmanager.connection.prepareStatement(sql);
+        ps.setInt(1, this.getId());
+        ResultSet set = ps.executeQuery();
+
+        while (set.next()){
+            Home tempHome = new Home();
+
+            tempHome.setId(set.getInt("Id"));
+            tempHome.setAddress(set.getString("Address"));
+            tempHome.setTitle(set.getString("Title"));
+            tempHome.setCountry(set.getString("Country"));
+            tempHome.setCity(set.getString("City"));
+            tempHome.setCapacity(set.getInt("Capacity"));
+            tempHome.setPrice(set.getDouble("Price"));
+            tempHome.setImageURL(set.getString("Image"));
+            tempHome.setCustomerId(set.getInt("CustomerId"));
+
+            homeList.add(tempHome);
+        }
+
+        return homeList;
     }
 }
