@@ -1,16 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
-
+<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="airBnBish.HomeOwnerDetailsController">
    <children>
-      <Label layoutX="102.0" layoutY="134.0" text="Liverpool ">
-         <font>
-            <Font size="91.0" />
-         </font>
-      </Label>
+      <TextField fx:id="priceField" layoutX="225.0" layoutY="103.0" />
+      <TextField fx:id="capField" layoutX="225.0" layoutY="56.0" />
+      <TextField fx:id="titleField" layoutX="225.0" layoutY="14.0" />
+      <TextField fx:id="urlField" layoutX="226.0" layoutY="150.0" />
+      <Text layoutX="190.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Title:" />
+      <Text layoutX="166.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Capacity:" />
+      <Text layoutX="125.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price (Per Night):" />
+      <Text layoutX="159.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image Url:" />
+      <Button layoutX="133.0" layoutY="187.0" mnemonicParsing="false" text="Confirm" />
+      <Button layoutX="271.0" layoutY="187.0" mnemonicParsing="false" onAction="#returnAction" text="Remove" />
+      <Button layoutX="404.0" layoutY="187.0" mnemonicParsing="false" text="Return" />
+      <DatePicker fx:id="startDate" layoutX="78.0" layoutY="258.0" />
+      <DatePicker fx:id="endDate" layoutX="342.0" layoutY="258.0" />
+      <Button layoutX="275.0" layoutY="310.0" mnemonicParsing="false" text="Search" />
+      <Text layoutX="207.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search For Bookings (Empty dates for all bookings)" wrappingWidth="187.73675537109375" />
+      <Text layoutX="5.0" layoutY="275.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Starting Date:" />
+      <Text layoutX="291.0" layoutY="275.0" strokeType="OUTSIDE" strokeWidth="0.0" text="End Date:" />
    </children>
 </AnchorPane>
