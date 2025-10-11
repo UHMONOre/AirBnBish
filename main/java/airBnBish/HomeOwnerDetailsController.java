@@ -7,6 +7,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Spinner;
+import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -18,7 +20,10 @@ public class HomeOwnerDetailsController {
     private Home home;
 
     @FXML
-    private TextField titleField, capField, priceField, urlField;
+    private TextField titleField, priceField, urlField;
+
+    @FXML
+    private Spinner<Integer> capSpinner;
 
     @FXML
     private DatePicker startDate, endDate;
@@ -28,9 +33,12 @@ public class HomeOwnerDetailsController {
         this.home = home;
 
         titleField.setText(home.getTitle());
-        capField.setText(home.getCapacity().toString());
         priceField.setText(home.getPrice().toString());
         urlField.setText(home.getImageURL());
+
+        SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1,8);
+        valueFactory.setValue(home.getCapacity());
+        capSpinner.setValueFactory(valueFactory);
     }
 
     public void returnAction(ActionEvent event) throws IOException, SQLException {
