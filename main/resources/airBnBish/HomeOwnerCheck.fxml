@@ -12,6 +12,7 @@
             <VBox fx:id="homeContainer" prefHeight="386.0" prefWidth="584.0" />
          </content>
       </ScrollPane>
-      <Button layoutX="5.0" layoutY="1.0" mnemonicParsing="false" onAction="#returnAction" prefHeight="26.0" prefWidth="590.0" text="Return" />
+      <Button layoutX="5.0" layoutY="1.0" mnemonicParsing="false" onAction="#returnAction" prefHeight="26.0" prefWidth="298.0" text="Return" />
+      <Button layoutX="303.0" layoutY="1.0" mnemonicParsing="false" onAction="#addHome" prefHeight="26.0" prefWidth="297.0" text="Add Home" />
    </children>
 </AnchorPane>

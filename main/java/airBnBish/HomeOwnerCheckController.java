@@ -10,6 +10,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -38,6 +39,19 @@ public class HomeOwnerCheckController {
 
             homeContainer.getChildren().add(bookingCard);
         }
+    }
+
+    public void addHome(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("AddHome.fxml"));
+        Parent root = loader.load();
+
+        AddHomeController controller = loader.getController();
+        controller.initData(customer);
+
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     public void returnAction(ActionEvent event) throws IOException, SQLException {
