@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `homebookingapp` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `homebookingapp`;
 -- MySQL dump 10.13  Distrib 8.0.38, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: homebookingapp
@@ -28,7 +30,7 @@ CREATE TABLE `customers` (
   `Password` varchar(100) DEFAULT NULL,
   `Username` varchar(50) NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -37,7 +39,7 @@ CREATE TABLE `customers` (
 
 LOCK TABLES `customers` WRITE;
 /*!40000 ALTER TABLE `customers` DISABLE KEYS */;
-INSERT INTO `customers` VALUES (1,'mporasalex@gmail.com','123','uhmono');
+INSERT INTO `customers` VALUES (1,'mporasalex@gmail.com','123','uhmono'),(4,'mporasalex','123','uhmonore');
 /*!40000 ALTER TABLE `customers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -58,7 +60,7 @@ CREATE TABLE `homebookings` (
   KEY `HomeId` (`HomeId`),
   CONSTRAINT `homebookings_ibfk_1` FOREIGN KEY (`CustomerId`) REFERENCES `customers` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `homebookings_ibfk_2` FOREIGN KEY (`HomeId`) REFERENCES `homes` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -67,6 +69,7 @@ CREATE TABLE `homebookings` (
 
 LOCK TABLES `homebookings` WRITE;
 /*!40000 ALTER TABLE `homebookings` DISABLE KEYS */;
+INSERT INTO `homebookings` VALUES ('2025-10-08',5,1,61),('2025-10-09',6,1,61),('2025-10-09',7,1,32),('2025-10-10',8,1,32);
 /*!40000 ALTER TABLE `homebookings` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -112,4 +115,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-08-19 17:56:07
+-- Dump completed on 2025-10-14  0:52:22
