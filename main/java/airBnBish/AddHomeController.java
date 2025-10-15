@@ -94,7 +94,7 @@ public class AddHomeController {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Invalid Input");
             alert.setHeaderText(null);
-            alert.setContentText("Please enter a valid float number.");
+            alert.setContentText("Please enter a valid double number.");
             alert.showAndWait();
             return;
         }

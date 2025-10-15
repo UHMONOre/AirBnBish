@@ -11,12 +11,12 @@
    <children>
       <TextField fx:id="priceField" layoutX="226.0" layoutY="56.0" />
       <TextField fx:id="titleField" layoutX="225.0" layoutY="14.0" />
-      <TextField fx:id="urlField" layoutX="225.0" layoutY="100.0" />
+      <TextField fx:id="imageField" layoutX="225.0" layoutY="100.0" />
       <Text layoutX="190.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Title:" />
       <Text layoutX="125.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price (Per Night):" />
       <Text layoutX="159.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image Url:" />
-      <Button layoutX="129.0" layoutY="171.0" mnemonicParsing="false" text="Confirm" />
-      <Button layoutX="270.0" layoutY="171.0" mnemonicParsing="false" text="Remove" />
+      <Button layoutX="129.0" layoutY="171.0" mnemonicParsing="false" onAction="#editHome" text="Confirm" />
+      <Button layoutX="270.0" layoutY="171.0" mnemonicParsing="false" onAction="#removeHome" text="Remove" />
       <Button layoutX="404.0" layoutY="171.0" mnemonicParsing="false" onAction="#returnAction" text="Return" />
       <DatePicker fx:id="startDate" layoutX="102.0" layoutY="258.0" />
       <DatePicker fx:id="endDate" layoutX="368.0" layoutY="257.0" />
