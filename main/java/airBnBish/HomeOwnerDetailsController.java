@@ -86,6 +86,8 @@ public class HomeOwnerDetailsController {
             }
         }
 
+        //continue editing
+
         if (change){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Edit Successful");
