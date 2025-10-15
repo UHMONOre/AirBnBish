@@ -35,7 +35,7 @@ public class AddHomeController {
         capSpinner.setValueFactory(valueFactory);
     }
 
-    public void addHome() throws SQLException {
+    public void addHome(ActionEvent event) throws SQLException, IOException {
 
         DBmanager dBmanager = DBmanager.createConnection();
         String title = titleField.getText();
@@ -121,6 +121,18 @@ public class AddHomeController {
         ps.setInt(8, customer.getId());
 
         ps.executeUpdate();
+
+        //return action
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("HomeOwnerCheck.fxml"));
+        Parent root = loader.load();
+
+        HomeOwnerCheckController controller = loader.getController();
+        controller.initData(customer);
+
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     public void returnAction(ActionEvent event) throws IOException, SQLException {

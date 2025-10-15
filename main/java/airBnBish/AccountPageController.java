@@ -6,7 +6,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
@@ -98,23 +97,16 @@ public class AccountPageController {
     public void checkHomes(ActionEvent event) throws IOException, SQLException {
         ArrayList<Home> homeList = customer.ownedHomes();
 
-        if (!homeList.isEmpty()){
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("HomeOwnerCheck.fxml"));
-            Parent root = loader.load();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("HomeOwnerCheck.fxml"));
+        Parent root = loader.load();
 
-            HomeOwnerCheckController controller = loader.getController();
-            controller.initData(customer);
+        HomeOwnerCheckController controller = loader.getController();
+        controller.initData(customer);
 
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-        }else {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Input Error");
-            alert.setContentText("Password is wrong");
-            alert.showAndWait();
-        }
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     public void logout(ActionEvent event) throws IOException {

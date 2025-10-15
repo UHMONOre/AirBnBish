@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.LinkedHashMap;
+import java.util.TreeMap;
 import java.util.TreeSet;
 
 import static airBnBish.Home.arrangeCountryCity;
@@ -55,7 +55,7 @@ public class MainController {
 
         //tree view
         TreeSet<String> countries = new TreeSet<>();
-        LinkedHashMap<String, TreeSet<String>> countryCity = new LinkedHashMap<>();
+        TreeMap<String, TreeSet<String>> countryCity = new TreeMap<>();
         arrangeCountryCity(countries, countryCity);
 
         TreeItem<String> masterRoot = new TreeItem<>("Countries");

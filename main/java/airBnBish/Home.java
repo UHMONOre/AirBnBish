@@ -3,7 +3,7 @@ package airBnBish;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.LinkedHashMap;
+import java.util.TreeMap;
 import java.util.TreeSet;
 
 public class Home {
@@ -118,7 +118,7 @@ public class Home {
         this.customerId = customerId;
     }
 
-    public static void arrangeCountryCity (TreeSet<String> countries, LinkedHashMap<String, TreeSet<String>> countryCity) throws SQLException {
+    public static void arrangeCountryCity (TreeSet<String> countries, TreeMap<String , TreeSet<String>> countryCity) throws SQLException {
         DBmanager dBmanager = DBmanager.createConnection();
         String sql = "select Country, City from homes";
         PreparedStatement ps = dBmanager.connection.prepareStatement(sql);
@@ -129,6 +129,7 @@ public class Home {
             String city = set.getString("City");
 
             countries.add(country);
+
             countryCity.putIfAbsent(country, new TreeSet<>());
             countryCity.get(country).add(city);
         }
