@@ -20,7 +20,7 @@
       <Button layoutX="404.0" layoutY="171.0" mnemonicParsing="false" onAction="#returnAction" text="Return" />
       <DatePicker fx:id="startDate" layoutX="102.0" layoutY="258.0" />
       <DatePicker fx:id="endDate" layoutX="368.0" layoutY="257.0" />
-      <Button layoutX="275.0" layoutY="310.0" mnemonicParsing="false" text="Search" />
+      <Button layoutX="275.0" layoutY="310.0" mnemonicParsing="false" onAction="#searchBookings" text="Search" />
       <Text layoutX="206.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search For Bookings (Empty dates for all bookings)" wrappingWidth="187.73675537109375" />
       <Text layoutX="23.0" layoutY="274.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Starting Date:" />
       <Text layoutX="310.0" layoutY="274.0" strokeType="OUTSIDE" strokeWidth="0.0" text="End Date:" />
