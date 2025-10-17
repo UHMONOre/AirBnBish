@@ -150,7 +150,22 @@ public class HomeOwnerDetailsController {
             stage.setScene(scene);
             stage.show();
         } else if (startBooking == null || endBooking == null){
-            //continue
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Invalid Input");
+            alert.setHeaderText(null);
+            alert.setContentText("Both dates must be picked.");
+            alert.showAndWait();
+        } else {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("HomeOwnerBookings.fxml"));
+            Parent root = loader.load();
+
+            HomeOwnerBookingsController controller = loader.getController();
+            controller.initData(customer, home, startBooking, endBooking);
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
         }
     }
 
