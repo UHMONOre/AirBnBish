@@ -41,7 +41,7 @@ public class HomeOwnerContrainerController {
         Image image = new Image(home.getImageURL());
         imageView.setImage(image);
         titleLabel.setText(home.getTitle());
-        addressLabel.setText(home.getAddress());
+        addressLabel.setText(home.getAddress() + " " + home.getCountry() + ", " + home.getCity());
 
         LocalDate today = LocalDate.now();
 

@@ -2,11 +2,16 @@ package airBnBish;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
+import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -35,6 +40,8 @@ public class HomeOwnerBookingsController {
 
         HashMap<Customer , TreeSet<LocalDate>> bookingsMap = new HashMap<>();
         TreeSet<LocalDate> bookingsDateHolder = new TreeSet<>();
+
+        Integer paneId = 0;
 
         DBmanager dBmanager = DBmanager.createConnection();
         ResultSet set;
@@ -87,9 +94,28 @@ public class HomeOwnerBookingsController {
             AnchorPane bookingCard = loader.load();
 
             OwnerBookingContainerController controller = loader.getController();
-            controller.initData(customer, home, bookingDates);
+            controller.initData(customer, home, bookingDates, String.valueOf(paneId));
+            bookingCard.setId(String.valueOf(paneId));
+            paneId++;
 
             bookingVbox.getChildren().add(bookingCard);
         }
+    }
+
+    public static void deletePane(String paneId){
+        //continue tranfer vbox maybe to delete with paneId
+    }
+
+    public void returnAction(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("HomeOwnerDetails.fxml"));
+        Parent root = loader.load();
+
+        HomeOwnerDetailsController controller = loader.getController();
+        controller.initData(customer, home);
+
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 }
