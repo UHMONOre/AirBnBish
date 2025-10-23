@@ -14,6 +14,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -47,7 +48,7 @@ public class AddHomeController {
 
         Integer cap = capSpinner.getValue();
 
-        if (title.trim().isEmpty() || address.trim().isEmpty() || country.trim().isEmpty() || city.trim().isEmpty() || stringPrice.trim().isEmpty() || image.trim().isEmpty()){
+        if (title.trim().isEmpty() || address.trim().isEmpty() || country.trim().isEmpty() || city.trim().isEmpty() || stringPrice.trim().isEmpty()){
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Warning");
             alert.setHeaderText("Missing Information");
@@ -108,6 +109,15 @@ public class AddHomeController {
             return;
         }
 
+        if (!isValidURL(image)){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Invalid Input");
+            alert.setHeaderText(null);
+            alert.setContentText("Please enter a valid image url.");
+            alert.showAndWait();
+            return;
+        }
+
         sql = "insert into homes (Title, Address, Country, City, Price, Capacity, Image, CustomerId) values (?,?,?,?,?,?,?,?)";
         ps = dBmanager.connection.prepareStatement(sql);
 
@@ -133,6 +143,15 @@ public class AddHomeController {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    public boolean isValidURL(String image) {
+        try {
+            new java.net.URL(image); // just parsing it
+            return true;
+        } catch (MalformedURLException e) {
+            return false;
+        }
     }
 
     public void returnAction(ActionEvent event) throws IOException, SQLException {

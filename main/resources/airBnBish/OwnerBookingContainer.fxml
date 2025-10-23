@@ -5,8 +5,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#removeBooking" prefHeight="160.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="airBnBish.OwnerBookingContainerController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#removeBooking" prefHeight="160.0" prefWidth="600.0" style="-fx-border-width: 2; -fx-border-color: black;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="airBnBish.OwnerBookingContainerController">
    <children>
       <Label fx:id="titleLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="19.0" layoutY="4.0" prefHeight="18.0" prefWidth="561.0" text="Label" />
       <Label fx:id="addressLabel" alignment="CENTER" layoutX="19.0" layoutY="32.0" prefHeight="18.0" prefWidth="562.0" text="Label" />

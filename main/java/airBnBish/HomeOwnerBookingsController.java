@@ -1,5 +1,6 @@
 package airBnBish;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -8,10 +9,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -94,7 +93,7 @@ public class HomeOwnerBookingsController {
             AnchorPane bookingCard = loader.load();
 
             OwnerBookingContainerController controller = loader.getController();
-            controller.initData(customer, home, bookingDates, String.valueOf(paneId));
+            controller.initData(customer, home, bookingDates, bookingVbox, String.valueOf(paneId));
             bookingCard.setId(String.valueOf(paneId));
             paneId++;
 
@@ -102,8 +101,10 @@ public class HomeOwnerBookingsController {
         }
     }
 
-    public static void deletePane(String paneId){
-        //continue tranfer vbox maybe to delete with paneId
+    public static void deletePane(VBox bookingVbox, String paneId){
+        bookingVbox.getChildren().removeIf(
+                node -> node instanceof AnchorPane pane && paneId.equals(pane.getId())
+        );
     }
 
     public void returnAction(ActionEvent event) throws IOException {
