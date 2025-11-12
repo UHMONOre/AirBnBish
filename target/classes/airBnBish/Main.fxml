@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TreeView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="airBnBish.MainController">
+   <children>
+      <DatePicker fx:id="dateIn" layoutX="334.0" layoutY="100.0" />
+      <TreeView fx:id="treeView" layoutX="64.0" layoutY="100.0" onContextMenuRequested="#selectItem" onMouseClicked="#selectItem" prefHeight="200.0" prefWidth="200.0" />
+      <DatePicker fx:id="dateOut" layoutX="334.0" layoutY="187.0" />
+      <Spinner fx:id="guestSpinner" editable="true" layoutX="334.0" layoutY="273.0" prefHeight="26.0" prefWidth="175.0" />
+      <Text layoutX="64.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="City PIcker:" wrappingWidth="35.548828125" />
+      <Text layoutX="334.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Check-in" />
+      <Text layoutX="334.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Check-out" />
+      <Text layoutX="334.0" layoutY="269.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Guests" />
+      <Button layoutX="212.0" layoutY="342.0" mnemonicParsing="false" onAction="#search" text="Search" />
+      <Button layoutX="334.0" layoutY="342.0" mnemonicParsing="false" onAction="#returnAction" text="Return" />
+      <Label fx:id="cityLabel" layoutX="118.0" layoutY="83.0" text="City Not Selected" />
+   </children>
+</AnchorPane>

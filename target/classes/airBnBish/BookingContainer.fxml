@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#CheckBooking" prefHeight="110.0" prefWidth="600.0" style="-fx-border-color: black;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="airBnBish.BookingContainerController">
+   <children>
+      <Label fx:id="titleLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="286.0" layoutY="14.0" text="Title" />
+      <Label fx:id="addressLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="278.0" layoutY="46.0" text="Address" />
+      <Label fx:id="inLabel" layoutX="77.0" layoutY="79.0" text="Label" />
+      <Label fx:id="outLabel" layoutX="476.0" layoutY="79.0" text="Label" />
+   </children>
+</AnchorPane>

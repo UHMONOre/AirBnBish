@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="130.0" prefWidth="600.0" style="-fx-border-color: Black;" styleClass="home-container" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="airBnBish.HomeContainerController">
+    <children>
+        <ImageView fx:id="imageView" fitHeight="130.0" fitWidth="185.0" pickOnBounds="true" preserveRatio="true" />
+        <Label fx:id="titleLabel" layoutX="185.0" layoutY="14.0" prefHeight="18.0" prefWidth="406.0" text="Label" />
+        <Label layoutX="185.0" layoutY="57.0" text="Address:" />
+        <Label fx:id="addressLabel" layoutX="238.0" layoutY="57.0" prefHeight="18.0" prefWidth="345.0" text="Label" />
+        <Label fx:id="priceLabel" layoutX="185.0" layoutY="88.0" text="200.0">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Label>
+        <Label layoutX="231.0" layoutY="93.0" text="\$ Night" />
+        <Button fx:id="bookButton" layoutX="514.0" layoutY="89.0" mnemonicParsing="false" onAction="#book" text="Βοοκ" />
+      <Label fx:id="capLabel" layoutX="311.0" layoutY="88.0" text="8">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="328.0" layoutY="93.0" text="Capacity" />
+    </children>
+</AnchorPane>

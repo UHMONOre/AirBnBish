@@ -5,7 +5,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
-import javax.swing.*;
 import javafx.scene.input.MouseEvent;
 import java.sql.SQLException;
 import java.time.LocalDate;

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="airBnBish.BookingDetailsController">
+   <children>
+      <ImageView fx:id="imageView" fitHeight="160.0" fitWidth="254.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="titleLabel" layoutX="300.0" layoutY="38.0" prefHeight="18.0" prefWidth="287.0" text="Label" />
+      <Label fx:id="addressLabel" layoutX="300.0" layoutY="101.0" prefHeight="18.0" prefWidth="278.0" text="Label" />
+      <Label fx:id="countryCityLabel" layoutX="300.0" layoutY="159.0" text="Label" />
+      <Label fx:id="startDateLabel" layoutX="300.0" layoutY="212.0" text="Label" />
+      <Button layoutX="279.0" layoutY="279.0" mnemonicParsing="false" onAction="#cancelBookingButton" text="Cancel Booking" />
+      <Label fx:id="endDateLabel" layoutX="451.0" layoutY="212.0" text="Label" />
+      <Button layoutX="465.0" layoutY="279.0" mnemonicParsing="false" onAction="#returnButton" text="Return" />
+   </children>
+</AnchorPane>

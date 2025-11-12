@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="airBnBish.EditAccountController">
+   <children>
+      <Text layoutX="228.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username: " />
+      <TextField fx:id="userField" layoutX="225.0" layoutY="113.0" />
+      <TextField fx:id="emailField" layoutX="225.0" layoutY="155.0" />
+      <Text layoutX="227.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:" />
+      <PasswordField fx:id="passField" layoutX="225.0" layoutY="200.0" />
+      <PasswordField fx:id="passConfField" layoutX="226.0" layoutY="248.0" />
+      <Text layoutX="225.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" />
+      <Text layoutX="225.0" layoutY="244.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password Confermation:" />
+      <Button layoutX="202.0" layoutY="310.0" mnemonicParsing="false" onAction="#returnAction" text="Return" />
+      <Button layoutX="345.0" layoutY="310.0" mnemonicParsing="false" onAction="#checkEdit" text="Confirm" />
+   </children>
+</AnchorPane>

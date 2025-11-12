@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="airBnBish.HomeOwnerCheckController">
+   <children>
+      <ScrollPane layoutY="30.0" prefHeight="370.0" prefWidth="600.0">
+         <content>
+            <VBox fx:id="homeContainer" prefHeight="386.0" prefWidth="584.0" />
+         </content>
+      </ScrollPane>
+      <Button layoutX="5.0" layoutY="1.0" mnemonicParsing="false" onAction="#returnAction" prefHeight="26.0" prefWidth="298.0" text="Return" />
+      <Button layoutX="303.0" layoutY="1.0" mnemonicParsing="false" onAction="#addHome" prefHeight="26.0" prefWidth="297.0" text="Add Home" />
+   </children>
+</AnchorPane>
