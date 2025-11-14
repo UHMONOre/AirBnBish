@@ -38,8 +38,11 @@ public class HomeOwnerContrainerController {
         this.customer = customer;
         this.home = home;
 
-        Image image = new Image(home.getImageURL());
-        imageView.setImage(image);
+        if (!home.getImageURL().trim().isEmpty()){
+            Image image = new Image(home.getImageURL());
+            imageView.setImage(image);
+        }
+
         titleLabel.setText(home.getTitle());
         addressLabel.setText(home.getAddress() + " " + home.getCountry() + ", " + home.getCity());
 

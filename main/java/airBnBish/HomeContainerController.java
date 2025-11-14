@@ -52,8 +52,10 @@ public class HomeContainerController {
         priceLabel.setText(String.valueOf(home.getPrice()));
         capLabel.setText(String.valueOf(home.getCapacity()));
 
-        Image image = new Image(home.getImageURL());
-        imageView.setImage(image);
+        if (!home.getImageURL().trim().isEmpty()){
+            Image image = new Image(home.getImageURL());
+            imageView.setImage(image);
+        }
     }
 
     public void book(ActionEvent event) throws IOException {

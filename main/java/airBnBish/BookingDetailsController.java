@@ -53,8 +53,10 @@ public class BookingDetailsController {
         startDateLabel.setText("Check-in: " + startDate);
         endDateLabel.setText("Check-out: " + endDate);
 
-        Image image = new Image(home.getImageURL());
-        imageView.setImage(image);
+        if (!home.getImageURL().trim().isEmpty()){
+            Image image = new Image(home.getImageURL());
+            imageView.setImage(image);
+        }
     }
 
     public void cancelBookingButton(ActionEvent event) throws SQLException, IOException {

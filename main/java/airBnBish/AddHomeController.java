@@ -109,7 +109,7 @@ public class AddHomeController {
             return;
         }
 
-        if (!isValidURL(image)){
+        if (!isValidURL(image) && !image.trim().isEmpty()){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Invalid Input");
             alert.setHeaderText(null);

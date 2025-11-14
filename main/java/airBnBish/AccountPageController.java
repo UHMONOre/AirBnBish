@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
@@ -17,6 +18,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.TreeSet;
 
 public class AccountPageController {
@@ -33,6 +35,11 @@ public class AccountPageController {
 
     public void initDate(Customer customer) throws SQLException, IOException {
         this.customer = customer;
+
+        //create the alert and offer the choose of deleting the altered booking or keeping it
+        // and inform if it was completely deleted
+        checkBookingStatus();
+
 
         usernameLabel.setText("Welcome " + customer.getUsername() + "!");
         System.out.println("....");
@@ -92,6 +99,43 @@ public class AccountPageController {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void checkBookingStatus() throws SQLException {
+        DBmanager dBmanager = DBmanager.createConnection();
+        String sql = "select * from bookingstatus where CustomerId = ?";
+        PreparedStatement ps = dBmanager.connection.prepareStatement(sql);
+        ps.setInt(1, customer.getId());
+        ResultSet set = ps.executeQuery();
+
+        while (set.next()){
+            Customer customer1 = Customer.retrieveCustomer(set.getInt("CustomerId"));
+            Home home1 = Home.retrieveHome(set.getInt("HomeId"));
+            LocalDate startDate = set.getDate("StartDate").toLocalDate();
+            LocalDate endDate = set.getDate("EndDate").toLocalDate();
+
+            sql = "select * from homebookings where CustomerId = ? and HomeId = ?";
+            ps = dBmanager.connection.prepareStatement(sql);
+            ps.setInt(1, customer.getId());
+            ps.setInt(2, set.getInt("HomeId"));
+            ResultSet set1 = ps.executeQuery();
+
+            TreeSet<LocalDate> dates = new TreeSet<>();
+            while (set1.next()){
+                LocalDate date = set1.getDate("BookingDate").toLocalDate();
+                dates.add(date);
+            }
+
+            if (dates.isEmpty()){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Booking Canceled");
+                alert.setHeaderText(null);
+                alert.setContentText("The booking for the house: " + home1.getTitle() + " with address: " + home1.getAddress() + " on the dates: " + startDate + " to " + endDate + " has been canceled.");
+                alert.showAndWait();
+            }else {
+                //check continuity
+            }
+        }
     }
 
     public void checkHomes(ActionEvent event) throws IOException, SQLException {

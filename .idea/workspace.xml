@@ -4,7 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="89a34ebc-42c8-4dfb-8225-34ff9a48326e" name="Changes" comment="." />
+    <list default="true" id="89a34ebc-42c8-4dfb-8225-34ff9a48326e" name="Changes" comment=".">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/java/airBnBish/AccountPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/java/airBnBish/AccountPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/java/airBnBish/AddHomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/java/airBnBish/AddHomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/java/airBnBish/BookingDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/java/airBnBish/BookingDetailsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/java/airBnBish/BookingHomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/java/airBnBish/BookingHomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/java/airBnBish/HomeContainerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/java/airBnBish/HomeContainerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/java/airBnBish/HomeOwnerContrainerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/java/airBnBish/HomeOwnerContrainerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/java/airBnBish/OwnerBookingContainerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/java/airBnBish/OwnerBookingContainerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/airBnBish/AccountPageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/airBnBish/AccountPageController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/airBnBish/AddHomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/airBnBish/AddHomeController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/airBnBish/BookingDetailsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/airBnBish/BookingDetailsController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/airBnBish/BookingHomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/airBnBish/BookingHomeController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/airBnBish/HomeContainerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/airBnBish/HomeContainerController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/airBnBish/HomeOwnerContrainerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/airBnBish/HomeOwnerContrainerController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/airBnBish/OwnerBookingContainerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/airBnBish/OwnerBookingContainerController.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -45,26 +61,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.HelloApplication.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "Main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/mpora/Desktop/Java/AirBnBish/main/DBbackUp"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/mpora/Desktop/Java/AirBnBish/main/DBbackUp&quot;
   },
-  "keyToStringList": {
-    "ChangesTree.GroupingKeys": [
-      "directory",
-      "module",
-      "repository"
+  &quot;keyToStringList&quot;: {
+    &quot;ChangesTree.GroupingKeys&quot;: [
+      &quot;directory&quot;,
+      &quot;module&quot;,
+      &quot;repository&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\mpora\Desktop\Java\AirBnBish\main\DBbackUp" />
@@ -118,7 +134,15 @@
       <option name="project" value="LOCAL" />
       <updated>1762983987192</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary=".">
+      <option name="closed" value="true" />
+      <created>1763022082113</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1763022082113</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

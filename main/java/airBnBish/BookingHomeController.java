@@ -63,8 +63,10 @@ public class BookingHomeController {
         priceLabel.setText(String.valueOf(finalPrice));
         nightLabel.setText("For " + nights + " nights");
 
-        Image image = new Image(home.getImageURL());
-        imageView.setImage(image);
+        if (!home.getImageURL().trim().isEmpty()){
+            Image image = new Image(home.getImageURL());
+            imageView.setImage(image);
+        }
     }
 
     public void book(ActionEvent event) throws SQLException, IOException {
