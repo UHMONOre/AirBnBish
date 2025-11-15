@@ -1,5 +1,6 @@
 package airBnBish;
 
+import com.sun.source.tree.Tree;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,6 +20,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.TreeSet;
 
 public class AccountPageController {
@@ -114,6 +116,7 @@ public class AccountPageController {
             LocalDate startDate = set.getDate("StartDate").toLocalDate();
             LocalDate endDate = set.getDate("EndDate").toLocalDate();
 
+
             sql = "select * from homebookings where CustomerId = ? and HomeId = ?";
             ps = dBmanager.connection.prepareStatement(sql);
             ps.setInt(1, customer.getId());
@@ -125,6 +128,7 @@ public class AccountPageController {
                 LocalDate date = set1.getDate("BookingDate").toLocalDate();
                 dates.add(date);
             }
+            List<LocalDate> datesList = new ArrayList<>(dates);
 
             if (dates.isEmpty()){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -133,7 +137,58 @@ public class AccountPageController {
                 alert.setContentText("The booking for the house: " + home1.getTitle() + " with address: " + home1.getAddress() + " on the dates: " + startDate + " to " + endDate + " has been canceled.");
                 alert.showAndWait();
             }else {
-                //check continuity
+                //back
+                int index = 0;
+                LocalDate[] remainingDaysBack = new LocalDate[2];
+
+                while (index < datesList.size()){
+                    if (datesList.get(index).isEqual(startDate.minusDays(1))){
+                        remainingDaysBack[0] = datesList.get(index);
+                        remainingDaysBack[1] = datesList.get(index);
+
+                        int reverseIndex = index;
+                        while (reverseIndex >= 1){
+                            reverseIndex--;
+                            if (datesList.get(reverseIndex).isEqual(remainingDaysBack[0].minusDays(1))){
+                                remainingDaysBack[0] = datesList.get(reverseIndex);
+                            }else {
+                                break;
+                            }
+                        }
+
+                        index++;
+                        break;
+                    }else if (datesList.get(index).isAfter(startDate)){
+                        break;
+                    }else {
+                        index++;
+                    }
+                }
+
+                //front
+                LocalDate[] remainingDaysFront = new LocalDate[2];
+
+                while (index < datesList.size()){
+                    if (datesList.get(index).isEqual(endDate.plusDays(1))){
+                        remainingDaysFront[0] = datesList.get(index);
+                        remainingDaysFront[1] = datesList.get(index);
+
+                        while (index < datesList.size() - 1){
+                            index++;
+                            if (datesList.get(index).isEqual(remainingDaysFront[1].plusDays(1))){
+                                remainingDaysFront[1] = datesList.get(index);
+                            }else {
+                                break;
+                            }
+                        }
+
+                        break;
+                    }else if (datesList.get(index).isAfter(endDate.plusDays(1))){
+                        break;
+                    }else {
+                        index++;
+                    }
+                }
             }
         }
     }
