@@ -100,4 +100,12 @@ public class HomeBooking {
         ps.setDate(4, Date.valueOf(endDate));
         ps.executeUpdate();
     }
+
+    public static void removeBookingStatus(Integer statusId) throws SQLException {
+        DBmanager dBmanager = DBmanager.createConnection();
+        String sql = "delete from bookingstatus where Id = ?";
+        PreparedStatement ps = dBmanager.connection.prepareStatement(sql);
+        ps.setInt(1, statusId);
+        ps.executeUpdate();
+    }
 }

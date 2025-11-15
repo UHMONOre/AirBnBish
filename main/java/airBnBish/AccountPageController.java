@@ -8,6 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
@@ -18,10 +19,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.TreeSet;
+import java.util.*;
 
 public class AccountPageController {
     private Customer customer;
@@ -130,16 +128,12 @@ public class AccountPageController {
             }
             List<LocalDate> datesList = new ArrayList<>(dates);
 
-            if (dates.isEmpty()){
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Booking Canceled");
-                alert.setHeaderText(null);
-                alert.setContentText("The booking for the house: " + home1.getTitle() + " with address: " + home1.getAddress() + " on the dates: " + startDate + " to " + endDate + " has been canceled.");
-                alert.showAndWait();
-            }else {
+            LocalDate[] remainingDaysBack = new LocalDate[2];
+            LocalDate[] remainingDaysFront = new LocalDate[2];
+
+            if (!dates.isEmpty()){
                 //back
                 int index = 0;
-                LocalDate[] remainingDaysBack = new LocalDate[2];
 
                 while (index < datesList.size()){
                     if (datesList.get(index).isEqual(startDate.minusDays(1))){
@@ -166,7 +160,6 @@ public class AccountPageController {
                 }
 
                 //front
-                LocalDate[] remainingDaysFront = new LocalDate[2];
 
                 while (index < datesList.size()){
                     if (datesList.get(index).isEqual(endDate.plusDays(1))){
@@ -190,6 +183,49 @@ public class AccountPageController {
                     }
                 }
             }
+
+            //print alert
+            Alert alertConf = new Alert(Alert.AlertType.CONFIRMATION);
+            alertConf.setTitle("Booking Canceled");
+            alertConf.setHeaderText(null);
+
+            ButtonType keepButton = new ButtonType("Keep Booking");
+            ButtonType deleteButton = new ButtonType("Delete Booking");
+            alertConf.getButtonTypes().setAll(keepButton, deleteButton);
+
+            if (remainingDaysBack[0] == null && remainingDaysFront[0] == null){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Booking Canceled");
+                alert.setHeaderText(null);
+                alert.setContentText("The booking for the house: " + home1.getTitle() + " with address: " + home1.getAddress() + " on the dates: " + startDate + " to " + endDate + " has been canceled.");
+                alert.showAndWait();
+                HomeBooking.removeBookingStatus(set.getInt("Id"));
+                return;
+            }else if (remainingDaysFront[0] == null){
+                alertConf.setContentText("Part of the booking for the house: " + home1.getTitle() + " with address: " + home1.getAddress() + " on the dates: " + startDate + " to " + endDate + " has been canceled." +
+                        "The part that has not been canceled is the date(s):  " + remainingDaysBack[0] + " to " + remainingDaysBack[1] + ", do you want to keep it?");
+            }else if (remainingDaysBack[0] == null){
+                alertConf.setContentText("Part of the booking for the house: " + home1.getTitle() + " with address: " + home1.getAddress() + " on the dates: " + startDate + " to " + endDate + " has been canceled." +
+                        "The part that has not been canceled is the date(s):  " + remainingDaysFront[0] + " to " + remainingDaysFront[1] + ", do you want to keep it?");
+            }else {
+                alertConf.setContentText("Part of the booking for the house: " + home1.getTitle() + " with address: " + home1.getAddress() + " on the dates: " + startDate + " to " + endDate + " has been canceled." +
+                        "The part that has not been canceled is the date(s):  " + remainingDaysBack[0] + " to " + remainingDaysBack[1] + " and  from " + remainingDaysFront[0] + " to " + remainingDaysFront[1] + " , do you want to keep it?");
+            }
+
+            Optional<ButtonType> result = alertConf.showAndWait();
+
+            if (result.isPresent() && result.get() == deleteButton){
+                if (remainingDaysFront[0] == null){
+                    HomeBooking.cancelBooking(customer1, home1, remainingDaysBack[0], remainingDaysBack[1]);
+                }else if (remainingDaysBack[0] == null){
+                    HomeBooking.cancelBooking(customer1, home1, remainingDaysFront[0], remainingDaysFront[1]);
+                }else {
+                    HomeBooking.cancelBooking(customer1, home1, remainingDaysBack[0], remainingDaysBack[1]);
+                    HomeBooking.cancelBooking(customer1, home1, remainingDaysFront[0], remainingDaysFront[1]);
+                }
+            }
+
+            HomeBooking.removeBookingStatus(set.getInt("Id"));
         }
     }
 
